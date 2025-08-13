@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["es6", "DOM"],
+    "baseUrl": "./src",
+    "rootDir": ".",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "types": ["vitest/globals"],
+    "strict": true,
+    "noUnusedLocals": true,
+    "outDir": "out",
+    "sourceMap": true,
+    "esModuleInterop": true
+  },
+  "include": ["src/**/*.ts", "test/**/*.ts", "__mocks__/**/*.ts"],
+  "exclude": ["out", ".vscode", ".vscode-test", "node_modules"]
+}

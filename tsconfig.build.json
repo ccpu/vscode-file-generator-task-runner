@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "inlineSourceMap": false,
+    "inlineSources": false,
+    "sourceMap": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["test", "out", ".vscode", ".vscode-test", "node_modules"]
+}
