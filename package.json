@@ -315,7 +315,8 @@
     "typecheck": "tsc --noEmit",
     "deps:update": "npx taze -r -w && pnpm install",
     "deps:update:major": "npx taze major -r -w && pnpm install",
-    "prepare": "husky"
+    "prepare": "husky",
+    "build": "pnpm run compile"
   },
   "dependencies": {
     "@pixpilot/eslint-config": "^2.4.2",

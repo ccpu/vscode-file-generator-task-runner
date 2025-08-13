@@ -1,5 +1,5 @@
 import type { SourceFile } from '../source-file';
-import type { IConfiguration, NewFileTask } from '../types';
+import type { IConfiguration, NewFileTask, Template } from '../types';
 import path from 'node:path';
 import { DefaultLocationForNewFiles } from '../constants';
 import { resolveVariables } from '../utils/variable-resolver';
@@ -50,9 +50,7 @@ export class Configuration {
     return (rootDir.split(path.sep).pop() ?? '') + this.getDirectorySuffix();
   }
 
-  getTemplate():
-    | import('c:/Users/mdoaie/.vscode/extensions/vscode-file-generator/src/types').Template
-    | undefined {
+  getTemplate(): Template | undefined {
     return this.defaultConfiguration.template;
   }
 
