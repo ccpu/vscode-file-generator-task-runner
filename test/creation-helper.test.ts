@@ -2,6 +2,7 @@ import type { Configuration } from '../src/config/Configuration';
 import type { NewFileHelper } from '../src/new-file-helper';
 import type { SourceFile } from '../src/source-file';
 import type { Template } from '../src/types';
+import * as os from 'node:os';
 import * as path from 'node:path';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { CreationHelper } from '../src/creation-helper';
@@ -58,7 +59,9 @@ describe('creationHelper', () => {
   let mockVariableResolver: any;
 
   // Platform-aware path normalization for tests
-  const normalizePath = (testPath: string) => testPath.replace(/\//gu, path.sep);
+  const tempBaseDir = path.join(os.tmpdir(), 'vscode-file-generator-test');
+  const tempSrcDir = path.join(tempBaseDir, 'src');
+  const normalizePath = (testPath: string) => testPath.split(/[/\\]/u).join(path.sep);
 
   beforeEach(async () => {
     vi.clearAllMocks();
@@ -74,12 +77,12 @@ describe('creationHelper', () => {
     } as any;
 
     mockSourceFile = {
-      getAbsolutePath: vi.fn().mockReturnValue(normalizePath('/workspace/src/Button.ts')),
-      getBaseDirectoryPath: vi.fn().mockReturnValue(normalizePath('/workspace')),
+      getAbsolutePath: vi.fn().mockReturnValue(path.join(tempSrcDir, 'Button.ts')),
+      getBaseDirectoryPath: vi.fn().mockReturnValue(tempBaseDir),
     } as any;
 
     mockNewFileHelper = {
-      getFilesLocation: vi.fn().mockReturnValue(normalizePath('/workspace/src')),
+      getFilesLocation: vi.fn().mockReturnValue(tempSrcDir),
     } as any;
 
     vi.mocked(mockUtils.getFileName).mockReturnValue('Button.test.ts');
@@ -147,7 +150,7 @@ describe('creationHelper', () => {
 
       helper.createFile();
 
-      expect(createDirectorySpy).toHaveBeenCalledWith(normalizePath('/workspace/src'));
+      expect(createDirectorySpy).toHaveBeenCalledWith(tempSrcDir);
     });
 
     it('should create directory with mkdirp when directory does not exist', () => {
