@@ -30,6 +30,7 @@
   ],
   "main": "./out/extension",
   "engines": {
+    "pnpm": ">=9.6.0",
     "vscode": "^1.24.1"
   },
   "activationEvents": [
