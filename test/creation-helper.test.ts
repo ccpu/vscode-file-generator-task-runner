@@ -20,8 +20,6 @@ vi.mock('fs', () => ({
   writeFile: vi.fn(),
 }));
 
-vi.mock('mkdirp');
-
 vi.mock('../src/source-file.js', () => ({
   SourceFile: vi.fn(),
 }));

@@ -1,3 +1,3 @@
-module.exports = {
-  extends: ['@commitlint/config-conventional'],
-};
+import config from '@pixpilot/dev-config/commitlint';
+
+export default config;
