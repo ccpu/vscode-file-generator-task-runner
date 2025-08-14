@@ -20,9 +20,7 @@ vi.mock('fs', () => ({
   writeFile: vi.fn(),
 }));
 
-vi.mock('mkdirp', () => ({
-  sync: vi.fn(),
-}));
+vi.mock('mkdirp');
 
 vi.mock('../src/source-file.js', () => ({
   SourceFile: vi.fn(),
@@ -70,10 +68,6 @@ describe('creationHelper', () => {
     mockUtils = await import('../src/utils/index.js');
     mockTemplateManager = await import('../src/templates/index.js');
     mockVariableResolver = await import('../src/utils/variable-resolver.js');
-
-    // Mock mkdirp
-    const mockMkdirp = await import('mkdirp');
-    vi.mocked(mockMkdirp.sync).mockImplementation(() => undefined);
 
     mockConfig = {
       getDirectoryName: vi.fn().mockReturnValue('tests'),
@@ -152,6 +146,9 @@ describe('creationHelper', () => {
         .mockReturnValue(normalizePath('/workspace/src/tests'));
       vi.spyOn(helper, 'writeContentToFile').mockResolvedValue(true);
 
+      // Mock the getTemplate method to avoid template processing
+      vi.spyOn(helper, 'getTemplate').mockResolvedValue(['test content']);
+
       helper.createFile();
 
       expect(createDirectorySpy).toHaveBeenCalledWith(tempSrcDir);
@@ -194,9 +191,9 @@ describe('creationHelper', () => {
 
       const result = helper.createDirectoryIfNotExists(inputPath);
 
-      // Focus on the return value rather than the mkdirp call
       expect(result).toBe(normalizePath('/workspace/src/tests'));
       expect(mockConfig.getDirectoryName).toHaveBeenCalled();
+      // Don't test mkdirp directly since it's mocked - just ensure the method returns the correct path
     });
   });
 
