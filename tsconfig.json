@@ -9,7 +9,8 @@
     "types": ["vitest/globals"],
     "strict": true,
     "noUnusedLocals": true,
-    "outDir": "out",
+    "noEmit": true,
+    "outDir": "dist",
     "sourceMap": true,
     "esModuleInterop": true
   },
