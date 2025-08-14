@@ -10,6 +10,7 @@ describe('getWorkspaceRoot', () => {
   afterEach(() => {
     vscodeTestMock.mockGetWorkspaceFolder.mockReset();
     vscodeTestMock.mockWorkspaceFolders = undefined;
+    // @ts-ignore
     vscodeWorkspace.workspaceFolders = undefined;
   });
 
@@ -32,6 +33,7 @@ describe('getWorkspaceRoot', () => {
   });
 
   it('returns undefined if no workspace folders', () => {
+    // @ts-ignore
     vscodeWorkspace.workspaceFolders = undefined;
     expect(getWorkspaceRoot()).toBeUndefined();
   });

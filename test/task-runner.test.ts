@@ -145,7 +145,7 @@ describe('taskRunner', () => {
       const { ConfigurationManager } = await import(
         '../src/config/configuration-manager.js'
       );
-
+      // @ts-ignore
       vscode.workspace.rootPath = undefined;
 
       await taskRunner.run({ fsPath: '/test' } as any);
@@ -159,7 +159,7 @@ describe('taskRunner', () => {
         '../src/config/configuration-manager.js'
       );
       const { SourceFile } = await import('../src/source-file.js');
-
+      // @ts-ignore
       vscode.workspace.rootPath = '/workspace';
       vi.mocked(ConfigurationManager.getConfiguration).mockResolvedValue(undefined);
 
@@ -178,7 +178,7 @@ describe('taskRunner', () => {
       const mockConfig = {
         isValidExtension: vi.fn().mockReturnValue(true),
       };
-
+      // @ts-ignore
       vscode.workspace.rootPath = '/workspace';
       vi.mocked(ConfigurationManager.getConfiguration).mockResolvedValue(
         mockConfig as any,
@@ -202,7 +202,7 @@ describe('taskRunner', () => {
       const mockConfig = {
         isValidExtension: vi.fn().mockReturnValue(false),
       };
-
+      // @ts-ignore
       vscode.workspace.rootPath = '/workspace';
       vi.mocked(ConfigurationManager.getConfiguration).mockResolvedValue(
         mockConfig as any,

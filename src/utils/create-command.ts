@@ -27,7 +27,7 @@ export async function createCommand(
   stringBuilder.push(task.command);
 
   const sourceFileVariableResolver = new VariableResolverService(
-    vscode.workspace.workspaceFolders!,
+    vscode.workspace.workspaceFolders!.slice(),
     sourceFile.getAbsolutePath(),
   );
 
