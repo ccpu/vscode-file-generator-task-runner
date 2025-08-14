@@ -4,6 +4,7 @@ export * from './get-file-name';
 export * from './get-workspace-root';
 export * from './is-new-directory';
 export * from './is-support-extension';
+export * from './mkdirp-util';
 export * from './switch-to-file';
 export * from './util';
 export * from './variable-resolver';

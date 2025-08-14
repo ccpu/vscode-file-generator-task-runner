@@ -4,11 +4,9 @@ import type { SourceFile } from './source-file';
 import type { Template } from './types';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-// eslint-disable-next-line ts/no-require-imports
-import mkdirp = require('mkdirp');
 import { window } from 'vscode';
 import { TemplateManager } from './templates';
-import { getFileName, isNewDirectory, switchToFile } from './utils';
+import { createDirectory, getFileName, isNewDirectory, switchToFile } from './utils';
 import { resolveVariables } from './utils/variable-resolver';
 
 /**
@@ -41,7 +39,7 @@ export class CreationHelper {
     }
 
     if (!fs.existsSync(dirPath)) {
-      mkdirp.sync(dirPath);
+      createDirectory(dirPath);
     }
 
     const fileName = getFileName(this.sourceFile, this.configuration);
@@ -72,7 +70,7 @@ export class CreationHelper {
     const dirName = this.configuration.getDirectoryName();
     const pathToDir: string = path.join(dirPath, dirName);
 
-    mkdirp.sync(pathToDir);
+    createDirectory(pathToDir);
 
     return pathToDir;
   }

@@ -35,6 +35,7 @@ vi.mock('../src/templates/index.js', () => ({
 }));
 
 vi.mock('../src/utils/index.js', () => ({
+  createDirectory: vi.fn(),
   getFileName: vi.fn(),
   isNewDirectory: vi.fn(),
   switchToFile: vi.fn(),
