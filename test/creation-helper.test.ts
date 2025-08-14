@@ -71,6 +71,10 @@ describe('creationHelper', () => {
     mockTemplateManager = await import('../src/templates/index.js');
     mockVariableResolver = await import('../src/utils/variable-resolver.js');
 
+    // Mock mkdirp
+    const mockMkdirp = await import('mkdirp');
+    vi.mocked(mockMkdirp.sync).mockImplementation(() => undefined);
+
     mockConfig = {
       getDirectoryName: vi.fn().mockReturnValue('tests'),
       shouldSwitchToFile: vi.fn().mockReturnValue(true),
