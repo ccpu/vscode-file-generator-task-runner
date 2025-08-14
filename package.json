@@ -3,6 +3,7 @@
   "name": "file-generator-task-runner",
   "displayName": "File Generator Task Runner",
   "version": "2.0.0",
+  "packageManager": "pnpm@10.12.2",
   "description": "An extension to quickly generate new file base on the original file with new extension or .",
   "author": {
     "name": "mo doaie",
