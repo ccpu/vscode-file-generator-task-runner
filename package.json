@@ -318,7 +318,7 @@
     "install:local": "pnpm run package:vsix && node -e \"const fs = require('fs'); const vsix = fs.readdirSync('.').find(f => f.endsWith('.vsix')); if(vsix) require('child_process').execSync('code --install-extension ' + vsix, {stdio: 'inherit'}); else console.error('No .vsix file found');\""
   },
   "dependencies": {
-    "@pixpilot/eslint-config": "^2.4.2",
+    "@pixpilot/eslint-config": "^2.6.1",
     "@types/is-windows": "^1.0.2",
     "@types/mkdirp": "^2.0.0",
     "find-up": "^7.0.0",
