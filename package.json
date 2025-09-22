@@ -321,7 +321,7 @@
     "@pixpilot/eslint-config": "^2.4.2",
     "@types/is-windows": "^1.0.2",
     "@types/mkdirp": "^2.0.0",
-    "find-up": "^7.0.0",
+    "find-up": "^8.0.0",
     "is-windows": "^1.0.2",
     "mkdirp": "^3.0.1"
   },
